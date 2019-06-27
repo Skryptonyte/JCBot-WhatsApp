@@ -1,4 +1,4 @@
-
+from selenium.webdriver.common.action_chains import ActionChains
 import traceback
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -16,6 +16,22 @@ import time
 print("Final: ",builtins.commands)
 savedMessage = ""
 while True:
+    register=driver.find_elements_by_class_name("P6z4j")
+    try:
+        driver.find_element_by_xpath('/html/body/div[1]/div/div/div[4]/div/div[3]/div/span[2]/div/span[2]').click()
+    except:
+        pass
+    if len(register) > 0:
+        ele = register[-1]
+        action = webdriver.common.action_chains.ActionChains(driver)
+        action.move_to_element_with_offset(ele, 0, -20)
+        try:
+            action.click()
+            action.perform()
+            action.click()
+            action.perform()
+        except Exception as e:
+            pass
     try:
         xpath_latest_message = "//*[@class='_1ays2']/div[last()]/div/div/div[contains('.//span','')]/div[@class='_12pGw EopGb']/span"
         xpath_info = "//*[@class='_1ays2']/div[last()]/div/div/div[contains(@class,'copyable-text')]"
